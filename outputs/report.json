@@ -1,0 +1,43 @@
+{
+  "run": {
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "concurrency": 16,
+    "params": {
+      "temperature": 0.3,
+      "top_p": 0.9,
+      "top_k": 20,
+      "repetition_penalty": 1.1,
+      "max_tokens": 350
+    },
+    "elapsed_sec": 331.3,
+    "input_tokens": 305665,
+    "output_tokens": 93376,
+    "n": 300,
+    "avg_latency": 9.4,
+    "avg_attempts": 1.35
+  },
+  "metrics": {
+    "valid": 280,
+    "valid_rate": 0.933,
+    "throughput": 0.91,
+    "time_for_300_sec": 331.3,
+    "cost_vllm_per_1000": 19.9,
+    "errors_by_reason": {
+      "Количество предложений в description (6) вне диапазона 2-5": 7,
+      "Длина description (87) вне диапазона 120-700 символов": 1,
+      "Количество предложений в description (7) вне диапазона 2-5": 4,
+      "Количество предложений в description (1) вне диапазона 2-5": 6,
+      "Ответ оборвался из-за ограничения max_tokens": 1,
+      "Отсутствуют обязательные поля: ['cons', 'pros', 'tags']": 1
+    }
+  },
+  "api_comparison": {
+    "model": "deepseek-chat",
+    "n": 20,
+    "valid_rate": 1.0,
+    "input_tokens": 26633,
+    "output_tokens": 4422,
+    "elapsed_sec": 48.13,
+    "cost_per_1000": 39.9
+  }
+}
