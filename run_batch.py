@@ -748,17 +748,27 @@ async def main():
 
     predictions = []
 
-    for res in results:
+    for item, res in zip(items, results):
+        product_id = item["product_id"]
+
         if isinstance(res, Exception):
             err_msg = str(res)
             error_reasons[err_msg] += 1
+
+            predictions.append({
+                "product_id": product_id,
+                "status": "error",
+                "error": err_msg,
+            })
             continue
+
         data, attempt, p_toks, c_toks, lats = res
         valid_count += 1
         total_input_tokens += p_toks
         total_output_tokens += c_toks
         all_latencies.extend(lats)
         total_attempts_sum += attempt
+
         predictions.append(data)
 
     failed_count = total_requests - valid_count
